@@ -16,7 +16,17 @@ class SnowflakeDrawing extends JPanel {
      */
     private void drawStar(int x, int y, int size)
     {
+      if ( size <= 2 ) return;
 
+        // Six lines radiating from (x,y)
+        for ( int i = 0; i<6; i++ )
+        {
+            int endX = x + (int)(size*Math.cos( Math.PI/3*i ));
+            int endY = y + (int)(size*Math.sin( Math.PI/3*i ));
+           
+            g2d.drawLine( x, y, endX, endY );
+            drawStar( endX, endY, size/3 );
+        }
     }
 
     private void doDrawing(Graphics g) 
